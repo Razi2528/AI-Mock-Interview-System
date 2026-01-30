@@ -2,12 +2,12 @@ import { motion } from 'framer-motion';
 import { AnimatedSection } from '@/components/AnimatedSection';
 
 const companies = [
-  { name: 'Google', logo: 'Google' },
-  { name: 'Microsoft', logo: 'Microsoft' },
-  { name: 'Amazon', logo: 'Amazon' },
-  { name: 'Meta', logo: 'Meta' },
-  { name: 'Apple', logo: 'Apple' },
-  { name: 'Netflix', logo: 'Netflix' },
+  { name: 'Google', logo: 'google.svg' },
+  { name: 'Microsoft', logo: 'microsoft.svg' },
+  { name: 'Amazon', logo: 'amazon.svg' },
+  { name: 'Meta', logo: 'meta.svg' },
+  { name: 'Apple', logo: 'apple.svg' },
+  { name: 'Netflix', logo: 'netflix.svg' },
 ];
 
 export function LogoBar() {
@@ -31,9 +31,11 @@ export function LogoBar() {
               whileHover={{ opacity: 1 }}
               className="opacity-50 hover:opacity-100 transition-opacity"
             >
-              <span className="text-xl md:text-2xl font-bold text-gray-700">
-                {company.logo}
-              </span>
+              <img
+                src={`/images/logos/${company.logo}`}
+                alt={company.name}
+                className="h-6 md:h-8 object-contain"
+              />
             </motion.div>
           ))}
         </div>
