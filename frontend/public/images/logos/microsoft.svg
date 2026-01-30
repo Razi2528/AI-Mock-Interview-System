@@ -1,7 +1,2 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
-  <rect width="100%" height="100%" fill="#FFFFFF"/>
-  <rect x="20" y="20" width="32" height="32" fill="#F1511B" />
-  <rect x="68" y="20" width="32" height="32" fill="#7CBB00" />
-  <rect x="20" y="68" width="32" height="32" fill="#00A4EF" />
-  <rect x="68" y="68" width="32" height="32" fill="#FFB900" />
-</svg>
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 221 221" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Microsoft logo"><path d="M104.868 104.868H0V0h104.868v104.868z" fill="#f1511b"/><path d="M220.654 104.868H115.788V0h104.866v104.868z" fill="#80cc28"/><path d="M104.865 220.695H0V115.828h104.865v104.867z" fill="#00adef"/><path d="M220.654 220.695H115.788V115.828h104.866v104.867z" fill="#fbbc09"/></svg>

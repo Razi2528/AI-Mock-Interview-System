@@ -6,7 +6,6 @@ const companies = [
   { name: 'Microsoft', logo: 'microsoft.svg' },
   { name: 'Amazon', logo: 'amazon.svg' },
   { name: 'Meta', logo: 'meta.svg' },
-  { name: 'Apple', logo: 'apple.svg' },
   { name: 'Netflix', logo: 'netflix.svg' },
 ];
 
@@ -20,7 +19,7 @@ export function LogoBar() {
           </p>
         </AnimatedSection>
 
-        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+        <div className="grid grid-cols-3 md:grid-cols-5 gap-6 md:gap-12 items-center justify-items-center">
           {companies.map((company, index) => (
             <motion.div
               key={company.name}
@@ -29,12 +28,12 @@ export function LogoBar() {
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
               whileHover={{ opacity: 1 }}
-              className="opacity-50 hover:opacity-100 transition-opacity"
+              className="opacity-50 hover:opacity-100 transition-opacity flex items-center justify-center"
             >
               <img
                 src={`/images/logos/${company.logo}`}
                 alt={company.name}
-                className="h-6 md:h-8 object-contain"
+                className="h-8 md:h-10 w-auto object-contain"
               />
             </motion.div>
           ))}
