@@ -51,7 +51,7 @@ export function Navbar() {
               <div className="w-8 h-8 rounded-lg bg-[#635BFF] flex items-center justify-center">
                 <MessageSquare className="w-4 h-4 text-white" />
               </div>
-              <span className="text-xl font-bold text-gray-900">InterviewAI</span>
+              <span className="text-xl font-bold text-gray-900">Hirely AI</span>
             </Link>
             <Link to="/">
               <Button variant="ghost" className="text-gray-600 hover:text-gray-900">
@@ -83,7 +83,7 @@ export function Navbar() {
               <MessageSquare className="w-5 h-5 text-white" />
             </div>
             <span className={`text-xl font-bold transition-colors ${isScrolled ? 'text-gray-900' : 'text-white'}`}>
-              InterviewAI
+              Hirely AI
             </span>
           </Link>
 

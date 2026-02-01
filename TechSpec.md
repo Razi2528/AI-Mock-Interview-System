@@ -1,4 +1,4 @@
-# AI Mock Interview Platform - Technical Specification
+# Hirely AI - Technical Specification
 
 ## Component Inventory
 

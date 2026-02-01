@@ -2,12 +2,14 @@ import { motion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { AnimatedSection } from '@/components/AnimatedSection';
 
-const stats = [
-  { value: 50000, suffix: '+', label: 'Mock interviews conducted' },
-  { value: 92, suffix: '%', label: 'Users report improved confidence' },
-  { value: 4.8, suffix: '/5', label: 'Average user rating', isDecimal: true },
-  { value: 500, suffix: '+', label: 'Company roles supported' },
-];
+// This section is intentionally conservative because the product is under development.
+  // We show planned features and an early-access CTA instead of misleading claims.
+  const features = [
+    { title: 'Mock interviews (AI)', desc: 'Realistic interview simulations with role-specific prompts.' },
+    { title: 'Personalized feedback', desc: 'Actionable feedback to help you improve after each session.' },
+    { title: 'Progress analytics', desc: 'Track your improvement and focus on weak areas.' },
+    { title: 'Company question bank', desc: 'Curated questions mapped to real company roles.' },
+  ];
 
 function AnimatedCounter({ value, suffix, isDecimal = false }: { value: number; suffix: string; isDecimal?: boolean }) {
   const [displayValue, setDisplayValue] = useState(0);
@@ -95,48 +97,46 @@ export function Stats() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
-        <div className="max-w-2xl mb-16">
+        <div className="max-w-2xl mb-8">
           <AnimatedSection>
             <span className="text-[#00D4FF] font-semibold text-sm uppercase tracking-wider">
-              Proven Results
+              Coming Soon
             </span>
           </AnimatedSection>
           <AnimatedSection delay={0.1}>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mt-4 mb-6 leading-tight">
-              Join thousands who've landed their dream jobs
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mt-4 mb-4 leading-tight">
+              We’re building a better interview practice platform
             </h2>
           </AnimatedSection>
           <AnimatedSection delay={0.2}>
             <p className="text-lg text-white/70 leading-relaxed">
-              Our platform has helped students and professionals across the world improve 
-              their interview skills and secure offers at top companies.
+              The platform is currently under development. Sign up for early access to be among the first to try
+              mock interviews, personalized feedback, and progress analytics when we launch.
             </p>
           </AnimatedSection>
         </div>
 
-        {/* Stats Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {stats.map((stat, index) => (
+        {/* Features List + CTA */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          {features.map((f, idx) => (
             <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
+              key={f.title}
+              initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative"
+              transition={{ duration: 0.5, delay: idx * 0.08 }}
+              className="bg-white/5 rounded-lg p-6 h-full"
             >
-              <div className="border-l-2 border-[#635BFF] pl-6">
-                <div className="text-4xl sm:text-5xl font-bold text-white mb-2">
-                  <AnimatedCounter 
-                    value={stat.value} 
-                    suffix={stat.suffix}
-                    isDecimal={stat.isDecimal}
-                  />
-                </div>
-                <p className="text-white/60">{stat.label}</p>
-              </div>
+              <h3 className="text-white font-semibold text-lg mb-2">{f.title}</h3>
+              <p className="text-white/70 text-sm">{f.desc}</p>
             </motion.div>
           ))}
+        </div>
+
+        <div className="mt-4">
+          <a href="#/signup" className="inline-block bg-[#00D4FF] hover:bg-[#00B8E0] text-navy-900 font-semibold px-6 py-3 rounded-lg">
+            Get early access
+          </a>
         </div>
       </div>
     </section>

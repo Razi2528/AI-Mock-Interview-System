@@ -5,12 +5,16 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Eye, EyeOff, MessageSquare, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { setToken } from '@/lib/auth';
 
 export function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   return (
     <div className="min-h-screen flex">
@@ -107,7 +111,38 @@ export function LoginPage() {
           </div>
 
           {/* Form */}
-          <form className="space-y-4">
+          <form className="space-y-4" onSubmit={async (e) => {
+            e.preventDefault();
+            setError('');
+            setLoading(true);
+            try {
+              const body = new URLSearchParams();
+              body.append('username', email);
+              body.append('password', password);
+
+              const res = await fetch('http://localhost:8000/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body,
+              });
+
+              if (!res.ok) {
+                const err = await res.json().catch(() => null);
+                setError(err?.detail || 'Login failed.');
+                setLoading(false);
+                return;
+              }
+
+              const data = await res.json();
+              setToken(data.access_token);
+              // redirect to logged-in page
+              navigate('/me');
+            } catch (err) {
+              setError('Network error.');
+            } finally {
+              setLoading(false);
+            }
+          }}>
             <div>
               <Label htmlFor="email" className="text-gray-700">
                 Email address
@@ -157,11 +192,14 @@ export function LoginPage() {
               </a>
             </div>
 
+            {error && <p className="text-sm text-red-500">{error}</p>}
+
             <Button
               type="submit"
+              disabled={loading}
               className="w-full h-12 bg-[#635BFF] hover:bg-[#4F46E5] text-white rounded-lg font-semibold group"
             >
-              Sign In
+              {loading ? 'Signing in...' : 'Sign In'}
               <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
           </form>

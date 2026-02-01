@@ -7,7 +7,7 @@ import { AnimatedSection } from '@/components/AnimatedSection';
 const testimonials = [
   {
     quote:
-      "I was nervous about technical interviews, but after 10 practice sessions on InterviewAI, I walked into my Google interview with confidence. Landed the job!",
+      "I was nervous about technical interviews, but after 10 practice sessions on Hirely AI, I walked into my Google interview with confidence. Landed the job!",
     name: 'Sarah Chen',
     role: 'Software Engineer',
     company: 'Google',
@@ -25,7 +25,7 @@ const testimonials = [
   },
   {
     quote:
-      "As a career changer, I needed help articulating my transferable skills. InterviewAI helped me craft compelling stories that got me hired.",
+      "As a career changer, I needed help articulating my transferable skills. Hirely AI helped me craft compelling stories that got me hired.",
     name: 'Emily Watson',
     role: 'Data Analyst',
     company: 'Netflix',

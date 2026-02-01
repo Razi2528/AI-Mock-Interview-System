@@ -68,7 +68,7 @@ export function CTA() {
           <Link to="/signup">
             <Button
               size="lg"
-              className="bg-white text-[#635BFF] hover:bg-gray-100 rounded-full px-8 py-4 h-auto text-lg font-semibold group shadow-xl"
+              className="bg-[#635BFF] hover:bg-[#4F46E5] text-white rounded-full px-8 py-4 h-auto text-lg font-semibold group shadow-xl"
             >
               Start Practicing Free
               <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />

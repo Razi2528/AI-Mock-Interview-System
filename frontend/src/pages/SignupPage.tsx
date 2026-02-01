@@ -5,7 +5,8 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Eye, EyeOff, MessageSquare, ArrowRight, Check } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { setToken } from '@/lib/auth';
 
 export function SignupPage() {
   const [showPassword, setShowPassword] = useState(false);
@@ -14,6 +15,61 @@ export function SignupPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
+
+  const submitSignup = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+
+    if (password !== confirmPassword) {
+      setError('Passwords do not match');
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const res = await fetch('http://localhost:8000/auth/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password, full_name: fullName || undefined }),
+      });
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => null);
+        setError(err?.detail || 'Signup failed');
+        setLoading(false);
+        return;
+      }
+
+      // on successful signup, auto-login for convenience
+      const loginBody = new URLSearchParams();
+      loginBody.append('username', email);
+      loginBody.append('password', password);
+
+      const tokenRes = await fetch('http://localhost:8000/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: loginBody,
+      });
+
+      if (!tokenRes.ok) {
+        // redirect to login page with success message
+        navigate('/login');
+        return;
+      }
+
+      const tokenData = await tokenRes.json();
+      setToken(tokenData.access_token);
+      navigate('/me');
+    } catch (err) {
+      setError('Network error');
+    } finally {
+      setLoading(false);
+    }
+  };
+
 
   const benefits = [
     '3 free mock interviews',
@@ -135,7 +191,7 @@ export function SignupPage() {
           </div>
 
           {/* Form */}
-          <form className="space-y-4">
+          <form className="space-y-4" onSubmit={submitSignup}>
             <div>
               <Label htmlFor="fullName" className="text-gray-700">
                 Full Name
@@ -224,11 +280,14 @@ export function SignupPage() {
               </Label>
             </div>
 
+            {error && <p className="text-sm text-red-500">{error}</p>}
+
             <Button
               type="submit"
+              disabled={loading}
               className="w-full h-12 bg-[#635BFF] hover:bg-[#4F46E5] text-white rounded-lg font-semibold group"
             >
-              Create Account
+              {loading ? 'Creating...' : 'Create Account'}
               <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
           </form>

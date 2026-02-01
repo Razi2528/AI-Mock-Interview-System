@@ -109,7 +109,7 @@ export function Hero() {
                 className="h-12 px-4 bg-white/90 backdrop-blur-sm border-0 text-gray-900 placeholder:text-gray-500 rounded-full"
               />
               <Link to="/signup">
-                <Button className="h-12 px-6 bg-gray-900 hover:bg-gray-800 text-white rounded-full font-medium whitespace-nowrap group">
+                <Button className="h-12 px-6 bg-[#635BFF] hover:bg-[#4F46E5] text-white rounded-full font-medium whitespace-nowrap group">
                   Start Practicing Free
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>

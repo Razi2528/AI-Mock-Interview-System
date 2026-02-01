@@ -1,2 +1,9 @@
 fastapi
 uvicorn[standard]
+motor
+passlib
+python-jose[cryptography]
+python-dotenv
+pydantic-settings
+email-validator
+python-multipart

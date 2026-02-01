@@ -44,7 +44,7 @@ export function Footer() {
               <div className="w-10 h-10 rounded-xl bg-[#635BFF] flex items-center justify-center">
                 <MessageSquare className="w-5 h-5 text-white" />
               </div>
-              <span className="text-xl font-bold text-white">InterviewAI</span>
+              <span className="text-xl font-bold text-white">Hirely AI</span>
             </Link>
             <p className="text-white/60 text-sm mb-6 max-w-xs">
               Master your interviews with AI-powered practice and personalized feedback.
@@ -88,7 +88,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-white/40 text-sm">
-            © 2025 InterviewAI. All rights reserved.
+            © 2025 Hirely AI. All rights reserved.
           </p>
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
