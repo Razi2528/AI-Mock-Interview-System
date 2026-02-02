@@ -21,7 +21,7 @@ export function LoginPage() {
       {/* Left Side - Branding */}
       <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#635BFF] via-[#7B3FF2] to-[#00D4FF]" />
-        
+
         {/* Decorative elements */}
         <motion.div
           animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
@@ -33,7 +33,7 @@ export function LoginPage() {
           transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
           className="absolute bottom-32 right-20 w-24 h-24 bg-white/10 rounded-full"
         />
-        
+
         <div className="relative z-10 flex flex-col justify-center items-center w-full px-12 text-center">
           <div className="w-20 h-20 rounded-2xl bg-white/20 flex items-center justify-center mb-8">
             <MessageSquare className="w-10 h-10 text-white" />
@@ -136,7 +136,7 @@ export function LoginPage() {
               const data = await res.json();
               setToken(data.access_token);
               // redirect to logged-in page
-              navigate('/me');
+              navigate('/dashboard');
             } catch (err) {
               setError('Network error.');
             } finally {
