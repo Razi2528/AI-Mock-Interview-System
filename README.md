@@ -4,38 +4,34 @@ This repository contains the Hirely AI frontend (Vite + React + TypeScript) and 
 
 ---
 
-## Quick start
+## Setup Instructions
+
+### Environment Variables
+
+Before running the application, you need to set up your environment variables. 
+
+1.  **Copy the template**:
+    ```powershell
+    # Root directory
+    Copy-Item .env.example .env
+    ```
+2.  **Configure `.env`**: Open the newly created `.env` file and fill in your MongoDB Atlas connection string and other secrets.
+
+> [!IMPORTANT]
+> Never commit your `.env` file to git. It is already ignored by `.gitignore`.
 
 ### Backend (Windows PowerShell)
 
 ```powershell
-cd backend
-# create and activate a virtual environment (optional but recommended)
+# Create and activate a virtual environment
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 
-# install dependencies and copy example env
-python -m pip install -r requirements.txt
-Copy-Item .env.example .env -ErrorAction SilentlyContinue
+# Install dependencies
+python -m pip install -r backend/requirements.txt
 
-# start the backend
+# Start the backend
 python -m uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000
-
-# Or from repo root with venv python in one line (PowerShell)
-cd "D:\DL\AI Mock Interview System"; & ".venv\Scripts\python.exe" -m uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000
-```
-
-### Backend (Windows CMD)
-
-```cmd
-cd backend
-python -m venv .venv
-.venv\Scripts\activate.bat
-python -m pip install -r requirements.txt
-copy .env.example .env
-python -m uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000
-
-
 ```
 
 ### Frontend (Windows PowerShell)
@@ -46,18 +42,10 @@ npm install
 npm run dev
 ```
 
-### Frontend (Windows CMD)
-
-```cmd
-cd frontend
-npm install
-npm run dev
-```
-
 ---
 
 ## Notes
 
-- Make sure MongoDB is running and accessible at the URL configured in `backend/.env` (default: `mongodb://localhost:27017/`).
+- Make sure MongoDB (or Atlas) is running and accessible at the URL configured in `.env`.
 - After starting the backend, API docs are available at `http://localhost:8000/docs`.
-- Do NOT commit real `.env` files with secrets to version control. Use `backend/.env.example` as a template.
+- Use `.env.example` as a template for team synchronization.
