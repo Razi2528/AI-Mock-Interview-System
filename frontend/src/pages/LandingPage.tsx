@@ -5,7 +5,6 @@ import { LogoBar } from '@/components/sections/LogoBar';
 import { FeaturesOverview } from '@/components/sections/FeaturesOverview';
 import { HowItWorks } from '@/components/sections/HowItWorks';
 import { KeyFeatures } from '@/components/sections/KeyFeatures';
-import { Stats } from '@/components/sections/Stats';
 import { Testimonials } from '@/components/sections/Testimonials';
 import { Pricing } from '@/components/sections/Pricing';
 import { CTA } from '@/components/sections/CTA';
@@ -20,7 +19,6 @@ export function LandingPage() {
         <FeaturesOverview />
         <HowItWorks />
         <KeyFeatures />
-        <Stats />
         <Testimonials />
         <Pricing />
         <CTA />
