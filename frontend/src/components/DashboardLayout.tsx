@@ -80,7 +80,7 @@ export function DashboardLayout({ children, activeLink }: DashboardLayoutProps) 
     };
 
     return (
-        <div className="min-h-screen bg-gray-50 flex">
+        <div className="h-screen overflow-hidden bg-gray-50 flex">
             {/* Mobile Sidebar Overlay */}
             {isSidebarOpen && (
                 <div
@@ -91,11 +91,11 @@ export function DashboardLayout({ children, activeLink }: DashboardLayoutProps) 
 
             {/* Sidebar */}
             <aside
-                className={`fixed lg:static inset-y-0 left-0 w-[280px] bg-white border-r border-gray-200 z-50 flex flex-col transform transition-transform duration-300 ease-in-out ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+                className={`fixed inset-y-0 left-0 w-[280px] h-screen bg-white border-r border-gray-200 z-50 flex flex-col transform transition-transform duration-300 ease-in-out ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
                     } lg:translate-x-0`}
             >
                 {/* Logo */}
-                <div className="h-16 flex items-center justify-between px-6 border-b border-gray-100">
+                <div className="h-16 flex items-center justify-between px-6 border-b border-gray-100 flex-shrink-0">
                     <Link to="/dashboard" className="flex items-center gap-2">
                         <div className="w-9 h-9 rounded-xl bg-[#635BFF] flex items-center justify-center">
                             <MessageSquare className="w-5 h-5 text-white" />
@@ -111,7 +111,7 @@ export function DashboardLayout({ children, activeLink }: DashboardLayoutProps) 
                 </div>
 
                 {/* Navigation */}
-                <nav className="flex-1 px-4 py-6 space-y-1 overflow-y-auto">
+                <nav className="flex-1 min-h-0 px-4 py-6 space-y-1 overflow-y-auto">
                     {sidebarLinks.map((link) => {
                         const isActive = link.label === activeLinkName;
                         return (
@@ -135,7 +135,7 @@ export function DashboardLayout({ children, activeLink }: DashboardLayoutProps) 
                 </nav>
 
                 {/* User Profile */}
-                <div className="p-4 border-t border-gray-100">
+                <div className="p-4 border-t border-gray-100 flex-shrink-0">
                     <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50">
                         <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#635BFF] to-[#7B3FF2] flex items-center justify-center">
                             <User className="w-5 h-5 text-white" />
@@ -159,7 +159,7 @@ export function DashboardLayout({ children, activeLink }: DashboardLayoutProps) 
             </aside>
 
             {/* Main Content */}
-            <div className="flex-1 flex flex-col min-w-0">
+            <div className="flex-1 flex flex-col min-w-0 min-h-0 lg:ml-[280px]">
                 {/* Top Header */}
                 <header className="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-4 lg:px-8 sticky top-0 z-30">
                     <div className="flex items-center gap-4">
